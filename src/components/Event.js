@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Button from './Button'
+
+//var registerButton;
 
 const Event = (props) => (
   <div>
@@ -8,7 +11,9 @@ const Event = (props) => (
     {props.presenterName}
     {props.description}
     {props.eventDate}
-  </div>
+    <Button clickingProps={props.onClick} eventID = {props.Id} label = {props.registered? "UnRegister" : "Register"}/>
+    </div>
+ 
 )
 
 Event.propTypes = {

@@ -1,12 +1,15 @@
 import Event  from './Event'
 import { connect } from 'react-redux'
 import React from 'react'
-let EventList=(eventListsall)=>
+import {RegisterCourse}  from '../actions'
+
+let EventList=(props)=>
 (
   <div>
-        {eventListsall.state.map(event => (
-          <Event key={event.id} {...event}  />
+        {props.state.map(event => (
+          <Event key={event.id} {...event} onClick={()=>props.registerOnClick(event.id)} />
         ))}
+         
         </div>
 )
 const mapStateToProps = state => {
@@ -14,4 +17,11 @@ const mapStateToProps = state => {
    state
   }
 }
-export default connect(mapStateToProps)(EventList)
+
+const mapDispatchToProps = (dispatch) =>
+{
+   return {
+   registerOnClick: (id) => {dispatch(RegisterCourse(id));}
+  };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(EventList)
