@@ -2,22 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Event = (props) => (
-  <div
-    onClick={onClick}
-    style={{
-      textDecoration: props.registered ? 'line-through' : 'none'
-    }}
-  >
+  <div>
     <img width="75" src={props.topicImagePath}/>
     {props.topic}
     {props.presenterName}
     {props.description}
-    {props.presenterName}
+    {props.eventDate}
   </div>
 )
 
 Event.propTypes = {
-  onClick: PropTypes.func.isRequired,
   registered: PropTypes.bool.isRequired,
   description: PropTypes.string.isRequired,
   topic: PropTypes.string.isRequired,
