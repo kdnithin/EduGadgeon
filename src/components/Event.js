@@ -4,7 +4,7 @@ import Button from './Button'
 
 //var registerButton;
 
-const Event = (props) => (
+/*const Event = (props) => (
   <div>
     <img width="75" src={props.topicImagePath}/>
     {props.topic}
@@ -14,9 +14,21 @@ const Event = (props) => (
     <Button clickingProps={props.onClick} eventID = {props.Id} label = {props.registered? "UnRegister" : "Register"}/>
     </div>
  
+)*/
+
+
+const Event = (props) => (
+  <div>
+  <li>
+    {props.category} 
+    {props.courseUrl}
+    {props.duration}
+    </li>
+    </div>
+ 
 )
 
-Event.propTypes = {
+/*Event.propTypes = {
   registered: PropTypes.bool.isRequired,
   description: PropTypes.string.isRequired,
   topic: PropTypes.string.isRequired,
@@ -24,5 +36,5 @@ Event.propTypes = {
   eventDate: PropTypes.string.isRequired,
   topicImagePath: PropTypes.string.isRequired
 }
-
+*/
 export default Event

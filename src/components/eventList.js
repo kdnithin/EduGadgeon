@@ -1,16 +1,18 @@
 import Event  from './Event'
+import Posts  from './Posts'
 import { connect } from 'react-redux'
 import React from 'react'
-import {RegisterCourse}  from '../actions'
+import {FetchCourseList}  from '../actions'
+import { bindActionCreators } from 'redux';
 
 let EventList=(props)=>
 (
+ 
   <div>
-        {props.state.map(event => (
-          <Event key={event.id} {...event} onClick={()=>props.registerOnClick(event.id)} />
-        ))}
-         
-        </div>
+     {props.state.isLoading ? 'Loading' : ''}
+     <button onClick={()=>props.fetchCourses()}> Fetch Posts from Reddit API </button>
+     <Posts posts={props.state.events}/>
+  </div> 
 )
 const mapStateToProps = state => {
   return {
@@ -21,7 +23,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) =>
 {
    return {
-   registerOnClick: (id) => {dispatch(RegisterCourse(id));}
-  };
-}
+     fetchCourses : () => {
+       dispatch(FetchCourseList());
+     }
+   }
+
+};
 export default connect(mapStateToProps,mapDispatchToProps)(EventList)
